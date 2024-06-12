@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  useEffect(() => {
+    console.log("yo");
+  }, []);
+
   return (
-    <div>
+    <div className="container">
       <h1>Home Page</h1>
-      <p>je suis la page home</p>
       <Link to="/offer">View all offers</Link>
     </div>
   );
