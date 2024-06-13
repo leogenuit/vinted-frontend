@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import axios from "axios";
+// import Cookies from "js-cookie";
 const SignUp = () => {
   //   const [coordinates, setCoordinates] = useState(null);
   const [name, setName] = useState("");
@@ -10,11 +11,10 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("yo");
     useEffect(() => {
       const sendUserInfos = async () => {
         try {
-          await axios.post(
+          const response = await axios.post(
             "https://lereacteur-vinted-api.herokuapp.com/user/signup",
             {
               name: name,
@@ -23,6 +23,7 @@ const SignUp = () => {
               newsLetter: newsLetter,
             }
           );
+          console.log(response.data);
         } catch (error) {
           console.log("eroor : ", error);
         }
