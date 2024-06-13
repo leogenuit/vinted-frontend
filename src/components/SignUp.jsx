@@ -10,18 +10,22 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("yo");
     useEffect(() => {
       const sendUserInfos = async () => {
-        await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-          {
-            name: name,
-            email: email,
-            password: password,
-            newsLetter: newsLetter,
-          }
-        );
-        console.log("envoyer");
+        try {
+          await axios.post(
+            "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+            {
+              name: name,
+              email: email,
+              password: password,
+              newsLetter: newsLetter,
+            }
+          );
+        } catch (error) {
+          console.log("eroor : ", error);
+        }
       };
       sendUserInfos();
     }, []);
