@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Home = () => {
-  const [obj, setObj] = useState(null);
+  const [tab, setTab] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
-      );
 
-      setObj(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
+        );
+        setTab(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchData();
   }, []);
   return (
@@ -31,7 +31,7 @@ const Home = () => {
         </div>
       ) : (
         <div className="flex flex-wrap gap-5 ">
-          {obj.offers.map((offer) => {
+          {tab.offers.map((offer) => {
             return (
               <div key={offer._id} className="h-80 w-60 mb-20 ">
                 <div className="flex mb-2 gap-3">
