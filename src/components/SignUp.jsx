@@ -9,27 +9,22 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [newsLetter, setNewsLetter] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    useEffect(() => {
-      const sendUserInfos = async () => {
-        try {
-          const response = await axios.post(
-            "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-            {
-              name: name,
-              email: email,
-              password: password,
-              newsLetter: newsLetter,
-            }
-          );
-          console.log(response.data);
-        } catch (error) {
-          console.log("eroor : ", error);
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        {
+          name: name,
+          email: email,
+          password: password,
+          newsLetter: newsLetter,
         }
-      };
-      sendUserInfos();
-    }, []);
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log("eroor : ", error);
+    }
   };
   return (
     <div className="container">

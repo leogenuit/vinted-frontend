@@ -8,7 +8,7 @@ const Header = () => {
       <img className="w-24" src={logo} alt="" />
       <ul className="flex gap-5">
         <li>
-          <Link to="#">Sign up</Link>
+          <Link to="/sign-up">Sign up</Link>
         </li>
         <li>
           <Link to="#">Login</Link>
