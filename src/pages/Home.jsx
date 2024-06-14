@@ -33,31 +33,33 @@ const Home = () => {
         <div className="flex flex-wrap gap-5 ">
           {tab.offers.map((offer) => {
             return (
-              <div key={offer._id} className="h-80 w-60 mb-20 ">
-                <div className="flex mb-2 gap-3">
+              <Link to={`/offers/${offer._id}`} key={offer._id}>
+                <div key={offer._id} className="h-80 w-60 mb-20 ">
+                  <div className="flex mb-2 gap-3">
+                    <img
+                      className="w-5"
+                      src={offer.owner.account.avatar.url}
+                      alt="user avatar"
+                    />
+                    <p>{offer.owner.account.username}</p>
+                  </div>
                   <img
-                    className="w-5"
-                    src={offer.owner.account.avatar.url}
-                    alt="user avatar"
+                    className="w-full h-full "
+                    src={offer.product_image.url}
+                    alt="img"
                   />
-                  <p>{offer.owner.account.username}</p>
-                </div>
-                <img
-                  className="w-full h-full "
-                  src={offer.product_image.url}
-                  alt="img"
-                />
-                <p>{offer.product_price} €</p>
+                  <p>{offer.product_price} €</p>
 
-                {offer.product_details.map((detail) => {
-                  return (
-                    <div>
-                      <p>{detail.ÉTAT}</p>
-                      <p>{detail.MARQUE}</p>
-                    </div>
-                  );
-                })}
-              </div>
+                  {offer.product_details.map((detail) => {
+                    return (
+                      <div>
+                        <p>{detail.ÉTAT}</p>
+                        <p>{detail.MARQUE}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Link>
             );
           })}
         </div>

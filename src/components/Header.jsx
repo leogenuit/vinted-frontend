@@ -5,13 +5,15 @@ import logo from "../assets/img/vinted.png";
 const Header = () => {
   return (
     <nav className="flex justify-between items-center border-b-2 border-gray-500 border-solid py-5 container">
-      <img className="w-24" src={logo} alt="" />
+      <Link to="/">
+        <img className="w-24" src={logo} alt="" />
+      </Link>
       <ul className="flex gap-5">
         <li>
           <Link to="/sign-up">Sign up</Link>
         </li>
         <li>
-          <Link to="#">Login</Link>
+          <Link to="/login">Login</Link>
         </li>
         <li>
           <Link to="#">Sell articles</Link>

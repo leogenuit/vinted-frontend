@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import axios from "axios";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 const SignUp = () => {
-  //   const [coordinates, setCoordinates] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,12 +14,14 @@ const SignUp = () => {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         {
-          name: name,
-          email: email,
-          password: password,
-          newsLetter: newsLetter,
+          name,
+          email,
+          password,
+          newsLetter,
         }
       );
+
+      Cookies.set("token", response.data.token, { expires: 7 });
       console.log(response.data);
     } catch (error) {
       console.log("eroor : ", error);
