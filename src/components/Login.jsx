@@ -2,10 +2,13 @@ import React from "react";
 import Input from "./Input";
 import { useState } from "react";
 import axios from "axios";
-const Login = () => {
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -16,6 +19,11 @@ const Login = () => {
           password,
         }
       );
+      if (response.data.token) {
+        Cookies.set("token", response.data.token, { expires: 15 });
+        setToken(response.data.token);
+        navigate("/");
+      }
       console.log(response.data);
     } catch (error) {
       console.log(error);

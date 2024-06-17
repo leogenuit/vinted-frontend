@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Home = () => {
+const Home = ({ search }) => {
   const [tab, setTab] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -10,7 +10,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/v2/offers?title=${search}`
         );
         setTab(response.data);
         setIsLoading(false);
@@ -19,12 +19,9 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [search]);
   return (
     <div className="container">
-      <h1>Home Page</h1>
-      <Link to="/offer">View all offers</Link>
-
       {isLoading ? (
         <div>
           <p>Chargement des offres</p>
