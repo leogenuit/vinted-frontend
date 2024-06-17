@@ -3,10 +3,9 @@ import Input from "./Input";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
 import ButtonSecondary from "./ButtonSecondary";
 import { Link } from "react-router-dom";
-const SignUp = ({ setToken }) => {
+const SignUp = ({ setToken, title }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,9 +43,10 @@ const SignUp = ({ setToken }) => {
   };
   return (
     <div className="pt-8 mx-auto w-1/6">
-      <h1 className="text-center text-2xl font-light pb-8">S'inscrire</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-10">
+      <h1 className="text-center text-2xl font-light pb-8">{title}</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-10 ">
         <Input
+          className=""
           placeholder="Nom d'utilisateur"
           type="text"
           value={username}
