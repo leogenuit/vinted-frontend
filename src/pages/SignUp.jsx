@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import Input from "./Input";
+import Input from "../components/Input";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
-import ButtonSecondary from "./ButtonSecondary";
+import ButtonSecondary from "../components/ButtonSecondary";
 import { Link } from "react-router-dom";
 const SignUp = ({ setToken }) => {
   const [username, setUsername] = useState("");

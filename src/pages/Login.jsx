@@ -1,9 +1,9 @@
 import React from "react";
-import Input from "./Input";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/Input";
 import ButtonSecondary from "../components/ButtonSecondary";
 import { Link } from "react-router-dom";
 const Login = ({ setToken }) => {

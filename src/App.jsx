@@ -5,8 +5,8 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Header from "./components/Header";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 import Cookies from "js-cookie";
 
 function App() {

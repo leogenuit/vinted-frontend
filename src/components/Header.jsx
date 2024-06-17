@@ -7,7 +7,7 @@ import ButtonSecondary from "./ButtonSecondary";
 
 const Header = ({ token, setToken, search, setSearch }) => {
   return (
-    <nav className="mx-auto flex justify-between items-center py-5 container pb-8">
+    <nav className="w-4/6 mx-auto mb-8 flex justify-between items-center py-5 container pb-8 border-b-2">
       <Link to="/">
         <img className="w-24" src={logo} alt="" />
       </Link>

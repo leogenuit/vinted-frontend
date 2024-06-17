@@ -21,40 +21,44 @@ const Home = ({ search }) => {
     fetchData();
   }, [search]);
   return (
-    <div className="container">
+    <div>
       {isLoading ? (
         <div>
           <p>Chargement des offres</p>
         </div>
       ) : (
-        <div className="flex flex-wrap gap-5 ">
+        <div className="flex justify-between flex-wrap gap-2 mx-auto w-4/6 ">
           {tab.offers.map((offer) => {
             return (
               <Link to={`/offers/${offer._id}`} key={offer._id}>
-                <div key={offer._id} className="h-80 w-60 mb-20 ">
-                  <div className="flex mb-2 gap-3">
+                <div key={offer._id} className="w-60 mb-6 shadow-md">
+                  <div className="flex p-2 gap-3">
                     <img
-                      className="w-5"
-                      src={offer.owner.account.avatar.url}
+                      className="w-5 max-h-8"
+                      src={offer.owner.account.avatar?.secure_url}
                       alt="user avatar"
                     />
-                    <p>{offer.owner.account.username}</p>
+                    <p className="text-xs text-gray-400">
+                      {offer.owner.account.username}
+                    </p>
                   </div>
                   <img
-                    className="w-full h-full "
+                    className="w-full min-h-80 max-h-80 pb-2 "
                     src={offer.product_image.url}
                     alt="img"
                   />
-                  <p>{offer.product_price} €</p>
+                  <div className="p-2">
+                    <p className="text-sm">{offer.product_price} €</p>
 
-                  {offer.product_details.map((detail) => {
-                    return (
-                      <div>
-                        <p>{detail.ÉTAT}</p>
-                        <p>{detail.MARQUE}</p>
-                      </div>
-                    );
-                  })}
+                    {offer.product_details.map((detail) => {
+                      return (
+                        <div className="text-xs text-gray-400">
+                          <p>{detail.ÉTAT}</p>
+                          <p>{detail.MARQUE}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </Link>
             );

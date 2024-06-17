@@ -25,22 +25,27 @@ const Offer = () => {
   return isLoading ? (
     <p>Loading...</p>
   ) : (
-    <main>
-      <h1>Page Offer</h1>
-      <img src={data.product_image.secure_url} alt={data.product_name} />
-      {data.product_details.map((detail, index) => {
-        console.log("élément dans le tableau   ", detail);
-        const keys = Object.keys(detail);
-        console.log("liste des clefs   ", keys);
-        const key = keys[0];
-        console.log("clef sortie du tableau  ", key);
-        return (
-          <p key={index}>
-            {key} {detail[key]}
-          </p>
-        );
-      })}
-    </main>
+    <div className="w-4/6 mx-auto flex gap-40">
+      <img
+        className="w-1/3 h-3/4 shadow-2xl"
+        src={data.product_image.secure_url}
+        alt={data.product_name}
+      />
+      <div className="bg-gray-200">
+        {data.product_details.map((detail, index) => {
+          const keys = Object.keys(detail);
+          const key = keys[0];
+          return (
+            <div>
+              <p key={index}>
+                {key} {detail[key]}
+              </p>
+              <p>yo</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 
