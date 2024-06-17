@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/vinted.png";
 import Cookies from "js-cookie";
+import Button from "./Button";
+import ButtonSecondary from "./ButtonSecondary";
 
 const Header = ({ token, setToken, search, setSearch }) => {
   return (
-    <nav className="flex justify-between items-center py-5 container pb-8">
+    <nav className="mx-auto flex justify-between items-center py-5 container pb-8">
       <Link to="/">
         <img className="w-24" src={logo} alt="" />
       </Link>
@@ -29,15 +31,19 @@ const Header = ({ token, setToken, search, setSearch }) => {
       ) : (
         <ul className="flex gap-5">
           <li>
-            <Link to="/signup" className="border-2 border-solid border-red-500">
-              Sign up
+            <Link to="/signup">
+              <Button text="S'inscrire" />
             </Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login">
+              <Button text="Se connecter" />
+            </Link>
           </li>
           <li>
-            <Link to="#">Sell articles</Link>
+            <Link to="#">
+              <ButtonSecondary text="Vends tes articles" />
+            </Link>
           </li>
         </ul>
       )}
