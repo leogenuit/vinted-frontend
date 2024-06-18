@@ -31,7 +31,7 @@ const Home = ({ search }) => {
           {tab.offers.map((offer) => {
             return (
               <Link to={`/offers/${offer._id}`} key={offer._id}>
-                <div key={offer._id} className="w-60 mb-6 shadow-md">
+                <div key={offer._id} className="w-60 mb-6 shadow-custom">
                   <div className="flex p-2 gap-3">
                     <img
                       className="w-5 max-h-8"
