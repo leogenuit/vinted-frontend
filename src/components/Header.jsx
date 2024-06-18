@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/img/vinted.png";
 import Cookies from "js-cookie";
 import Button from "./Button";
+import ButtonTercary from "./ButtonTercary";
 import ButtonSecondary from "./ButtonSecondary";
 
 const Header = ({ token, setToken, search, setSearch }) => {
@@ -20,14 +21,21 @@ const Header = ({ token, setToken, search, setSearch }) => {
         }}
       />
       {token ? (
-        <button
-          onClick={() => {
-            Cookies.remove("token");
-            setToken(null);
-          }}
-        >
-          Se déconnecter
-        </button>
+        <div className="flex gap-8">
+          <Link to={token ? "/publish" : "/login"}>
+            <ButtonSecondary text="Vends tes articles" />
+          </Link>
+
+          <button
+            text={"Se deconnecter"}
+            onClick={() => {
+              Cookies.remove("token");
+              setToken(null);
+            }}
+          >
+            <ButtonTercary text={"Se déconnecter"} />
+          </button>
+        </div>
       ) : (
         <ul className="flex gap-5">
           <li>
@@ -40,12 +48,8 @@ const Header = ({ token, setToken, search, setSearch }) => {
               <Button text="Se connecter" />
             </Link>
           </li>
-          <li>
-            <Link to="#">
-              <ButtonSecondary text="Vends tes articles" />
-            </Link>
-          </li>
         </ul>
+
       )}
     </nav>
   );

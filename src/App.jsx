@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Cookies from "js-cookie";
+import Publish from "./pages/Publish";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
@@ -26,6 +27,7 @@ function App() {
         <Route path="/offers/:id" element={<Offer />} />
         <Route path="/signup" element={<SignUp setToken={setToken} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/publish" element={<Publish token={token} />} />
       </Routes>
     </Router>
   );
